@@ -1,0 +1,55 @@
+
+NEXAFLOW SAAS - DAX MEASURES REFERENCE
+=======================================
+
+-- 1. Total MRR
+Total MRR = SUM(master_dataset[mrr])
+
+-- 2. Total Revenue
+Total Revenue = SUM(fact_payments[amount])
+
+-- 3. Churn Rate
+Churn Rate % = 
+DIVIDE(
+    COUNTROWS(FILTER(master_dataset, master_dataset[is_churned] = 1)),
+    COUNTROWS(master_dataset)
+) * 100
+
+-- 4. Average LTV
+Avg LTV = 
+AVERAGEX(
+    VALUES(master_dataset[customer_id]),
+    CALCULATE(SUM(master_dataset[mrr]))
+)
+
+-- 5. Active Customers
+Active Customers = 
+CALCULATE(
+    DISTINCTCOUNT(master_dataset[customer_id]),
+    master_dataset[status] = "active"
+)
+
+-- 6. Churned Customers
+Churned Customers = 
+CALCULATE(
+    DISTINCTCOUNT(master_dataset[customer_id]),
+    master_dataset[is_churned] = 1
+)
+
+-- 7. Average MRR Per Customer
+Avg MRR Per Customer = 
+DIVIDE([Total MRR], [Active Customers])
+
+-- 8. MRR by Plan
+MRR Starter = CALCULATE([Total MRR], master_dataset[plan_id] = 1)
+MRR Growth = CALCULATE([Total MRR], master_dataset[plan_id] = 2)
+MRR Enterprise = CALCULATE([Total MRR], master_dataset[plan_id] = 3)
+
+-- 9. Retention Rate
+Retention Rate % = 100 - [Churn Rate %]
+
+-- 10. YoY MRR Growth
+YoY MRR Growth % = 
+VAR CurrentYear = CALCULATE([Total MRR], YEAR(master_dataset[signup_date]) = YEAR(TODAY()))
+VAR PrevYear = CALCULATE([Total MRR], YEAR(master_dataset[signup_date]) = YEAR(TODAY()) - 1)
+RETURN DIVIDE(CurrentYear - PrevYear, PrevYear) * 100
