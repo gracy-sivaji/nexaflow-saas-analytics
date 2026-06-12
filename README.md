@@ -1,72 +1,31 @@
-NexaFlow SaaS Analytics Dashboard
+# NexaFlow SaaS Analytics Dashboard
 
-End-to-end SaaS Analytics project built using SQL, Python, Power BI, DAX, and SQLite to analyze customer subscriptions, revenue performance, churn behavior, and customer lifetime value.
+![Python](https://img.shields.io/badge/Python-3.x-blue) ![PowerBI](https://img.shields.io/badge/PowerBI-Dashboard-yellow) ![SQL](https://img.shields.io/badge/SQL-SQLite-green)
 
-Business Problem
+## Business Problem
+NexaFlow Inc. faced increasing churn and declining MRR. This project delivers a full end-to-end analytics solution identifying churn drivers, revenue trends, and customer segments across 299,872 records.
 
-NexaFlow Inc. is a fictional B2B SaaS company experiencing increasing customer churn and inconsistent revenue growth. Leadership needs a centralized analytics solution to monitor key SaaS metrics, identify churn risks, analyze customer behavior, and support data-driven decision-making.
+## Key Business Insights
+| Insight | Finding |
+|---|---|
+| Churn Risk | Month-to-month customers churn 3x more |
+| Revenue | Enterprise plan drives highest MRR |
+| LTV | Two-year contracts = 63% higher LTV |
+| Payments | 5% failed payment rate = recoverable loss |
 
-Project Objectives
+## Tech Stack
+| Tool | Purpose |
+|---|---|
+| Python (Pandas, Seaborn) | EDA & Cleaning |
+| SQL (SQLite) | Star Schema & KPI Queries |
+| Power BI + DAX | 6-Page Dashboard |
 
-* Analyze subscription and revenue performance
-* Measure customer churn and retention
-* Track Monthly Recurring Revenue (MRR)
-* Calculate Customer Lifetime Value (LTV)
-* Identify high-risk customer segments
-* Deliver executive-ready dashboards for business stakeholders
+## Dashboard Preview
+![Executive Summary](page1_executive_summary.png.png)
 
-Tech Stack
+## Dataset
+- Source: Kaggle Telco Churn (expanded)
+- 299,872 rows across 6 tables
 
-* SQL (SQLite)
-* Python (Pandas, NumPy, Matplotlib, Seaborn)
-* Power BI
-* DAX
-* GitHub
-
-Dataset
-
-* 299,872 records
-* Star schema data model
-* Subscription, payment, support ticket, customer, and plan data
-
-Key KPIs
-
-* Monthly Recurring Revenue (MRR)
-* Customer Lifetime Value (LTV)
-* Churn Rate
-* Retention Rate
-* Net Revenue Retention (NRR)
-* Payment Failure Rate
-
-Key Insights
-
-* Two-year contract customers generated significantly higher lifetime value than month-to-month customers.
-* Month-to-month subscribers exhibited substantially higher churn risk.
-* Enterprise plans contributed the majority of recurring revenue.
-* Payment failures represented a measurable source of recoverable revenue.
-* Senior customer segments showed elevated churn patterns.
-
-Dashboard Preview
-
-(Add Power BI screenshots here)
-
-Repository Structure
-
-data/
-sql/
-python/
-powerbi/
-images/
-README.md
-
-Business Recommendations
-
-* Promote longer-term contracts through targeted incentives.
-* Launch retention campaigns for high-risk customer segments.
-* Implement payment recovery workflows.
-* Expand enterprise plan acquisition efforts.
-
- Author
-
-Gracy Sivaji
-Data Analyst | SQL | Python | Power BI
+## Author
+**Gracy Sivaji** | MCA | Data Analyst
